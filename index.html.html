@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>진천고 3학년 이수 가이드북</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --color-background-primary:#ffffff;
+    --color-background-secondary:#F7F6FF;
+    --color-border-secondary:#D9D5FF;
+    --color-border-tertiary:#E8E5FF;
+    --color-text-primary:#222222;
+    --color-text-secondary:#66627A;
+    --color-text-tertiary:#9994AE;
+    --border-radius-md:12px;
+    --border-radius-lg:18px;
+  }
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#fdfdfd;color:var(--color-text-primary)}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .container{max-width:480px;margin:0 auto;padding:1rem;background:#fff;min-height:100vh}
+  .splash{position:relative;text-align:center;padding:2.5rem 1.5rem 2rem;border-radius:var(--border-radius-lg);margin-bottom:1.5rem;background:#1a1464;overflow:hidden}
+  .splash-bg-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;height:320px;object-fit:contain;opacity:0.07;pointer-events:none;user-select:none}
+  .splash > *:not(.splash-bg-logo){position:relative;z-index:1}
+  .splash-logo{width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto 1rem;display:block;box-shadow:0 4px 24px rgba(0,0,0,0.35);border:3px solid rgba(255,255,255,0.25)}
+  .splash-school{font-size:11px;font-weight:600;color:#AFA9EC;letter-spacing:0.1em;margin-bottom:6px;text-transform:uppercase}
+  .splash-title{font-size:22px;font-weight:700;color:#ffffff;margin-bottom:6px;line-height:1.4}
+  .splash-sub{font-size:13px;color:#AFA9EC;margin-bottom:1.5rem;line-height:1.6}
+  .splash-divider{width:40px;height:2px;background:#7F77DD;margin:0 auto 1.25rem}
+  .principal-box{background:rgba(255,255,255,0.1);padding:1rem 1.25rem;border-left:3px solid #7F77DD;text-align:left}
+  .principal-box p{font-size:13px;color:#D5D2F8;line-height:1.75}
+  .principal-box .sig{font-size:12px;color:#AFA9EC;margin-top:8px;font-weight:600}
+  .nav-tabs{display:flex;gap:6px;margin-bottom:1.5rem;border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:0}
+  .nav-tab{padding:9px 14px;font-size:14px;cursor:pointer;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;font-weight:500}
+  .nav-tab.active{color:#3C3489;border-bottom-color:#3C3489;font-weight:700}
+  .main-page{display:none}.main-page.active{display:block}
+  .sem-tabs{display:flex;gap:8px;margin-bottom:1.5rem}
+  .sem-tab{padding:8px 18px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:13px;cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);font-weight:500}
+  .sem-tab.active{background:#3C3489;color:#EEEDFE;border-color:#3C3489;font-weight:700}
+  .sem-page{display:none}.sem-page.active{display:block}
+  .section-label{font-size:12px;font-weight:700;letter-spacing:0.05em;color:var(--color-text-tertiary);margin:1.5rem 0 0.6rem}
+  .designated-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:0.5rem}
+  .group-box{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;margin-bottom:1rem}
+  .group-header{display:flex;align-items:center;gap:8px;margin-bottom:0.75rem;flex-wrap:wrap}
+  .group-title{font-size:15px;font-weight:700;color:var(--color-text-primary)}
+  .group-badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700}
+  .badge-pick1{background:#E1F5EE;color:#085041}
+  .badge-pick3{background:#FAEEDA;color:#633806}
+  .badge-pick1-purple{background:#EEEDFE;color:#3C3489}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+  .card{border-radius:var(--border-radius-lg);padding:0.875rem 1rem;cursor:pointer;transition:all 0.2s ease;border:1px solid transparent}
+  .card:hover{opacity:0.82}
+  .disabled-subject-card{opacity:.35;pointer-events:none;filter:grayscale(.2)}
+  .card h4{font-size:14px;font-weight:700;margin-bottom:4px;word-break:keep-all}
+  .card p{font-size:12px;opacity:0.85;font-weight:500}
+  .type-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:6px}
+  .c-kor{background:#EEEDFE;border-color:#AFA9EC}.c-kor h4{color:#26215C}.c-kor p{color:#534AB7}.c-kor .type-tag{background:#CECBF6;color:#26215C}
+  .c-math{background:#E6F1FB;border-color:#85B7EB}.c-math h4{color:#042C53}.c-math p{color:#185FA5}.c-math .type-tag{background:#B5D4F4;color:#042C53}
+  .c-eng{background:#E1F5EE;border-color:#5DCAA5}.c-eng h4{color:#04342C}.c-eng p{color:#0F6E56}.c-eng .type-tag{background:#9FE1CB;color:#04342C}
+  .c-soc{background:#FAEEDA;border-color:#EF9F27}.c-soc h4{color:#412402}.c-soc p{color:#854F0B}.c-soc .type-tag{background:#FAC775;color:#412402}
+  .c-sci{background:#EAF3DE;border-color:#97C459}.c-sci h4{color:#173404}.c-sci p{color:#3B6D11}.c-sci .type-tag{background:#C0DD97;color:#173404}
+  .c-pe{background:#FAECE7;border-color:#F0997B}.c-pe h4{color:#4A1B0C}.c-pe p{color:#993C1D}.c-pe .type-tag{background:#F5C4B3;color:#4A1B0C}
+  .c-tech{background:#FCEBEB;border-color:#F09595}.c-tech h4{color:#501313}.c-tech p{color:#A32D2D}.c-tech .type-tag{background:#F7C1C1;color:#501313}
+  .c-lang{background:#F1EFE8;border-color:#B4B2A9}.c-lang h4{color:#2C2C2A}.c-lang p{color:#5F5E5A}.c-lang .type-tag{background:#D3D1C7;color:#2C2C2A}
+  .c-art{background:#FBEAF0;border-color:#ED93B1}.c-art h4{color:#4B1528}.c-art p{color:#993556}.c-art .type-tag{background:#F4C0D1;color:#4B1528}
+  .c-edu{background:#E6F1FB;border-color:#378ADD}.c-edu h4{color:#042C53}.c-edu p{color:#185FA5}.c-edu .type-tag{background:#B5D4F4;color:#042C53}
+  .divider{height:1px;background:var(--color-border-tertiary);margin:1.5rem 0}
+  .modal-wrap{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:20;align-items:center;justify-content:center;padding:1.5rem}
+  .modal-wrap.open{display:flex}
+  .modal{background:var(--color-background-primary);border-radius:var(--border-radius-lg);padding:1.25rem;width:100%;max-width:420px;max-height:85vh;overflow-y:auto;box-shadow:0 10px 25px rgba(0,0,0,0.1)}
+  .modal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;background:linear-gradient(135deg,#F6F4FF 0%,#EEEDFE 100%);border:1px solid #D9D5FF;border-radius:18px;padding:0.9rem 1rem}
+  .modal h3{font-size:18px;font-weight:700;color:#312B70;line-height:1.4}
+  .close-btn{width:34px;height:34px;border:none;border-radius:50%;background:#EEEDFE;cursor:pointer;color:#2D2470;font-size:18px;display:flex;align-items:center;justify-content:center}
+  .close-btn:hover{background:#DCD8FF}
+  .modal-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+  .modal-meta span{background:linear-gradient(135deg,#F7F6FF 0%,#EEEDFE 100%);border:1px solid #D9D5FF;color:#4B458F;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:-0.01em}
+  .modal-desc{background:linear-gradient(135deg,#F6F4FF 0%,#EEEDFE 100%);border:1px solid #D9D5FF;border-left:4px solid #7F77DD;border-radius:16px;padding:1rem 1rem 1rem 1.1rem;font-size:14px;color:#3E3B57;line-height:1.7;margin-bottom:1rem;position:relative}
+  .modal-desc::before{content:"과목 소개";display:block;font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px}
+  .eval-box{border-radius:var(--border-radius-md);padding:1rem;margin-bottom:1rem}
+  .eval-title{font-size:14px;font-weight:700;margin-bottom:0.6rem;display:flex;align-items:center;gap:6px}
+  .eval-row{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.6;margin-bottom:6px}
+  .eval-dot{width:6px;height:6px;border-radius:50%;margin-top:7px;flex-shrink:0}
+  .eval-key{font-weight:700;white-space:nowrap}
+  /* 관련학과/직업 박스 */
+  .career-box{background:#F0F9F5;border:1px solid #9FE1CB;border-radius:var(--border-radius-md);padding:1rem;margin-bottom:1rem}
+  .career-title{font-size:14px;font-weight:700;color:#085041;margin-bottom:0.75rem;display:flex;align-items:center;gap:6px}
+  .career-row{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.65;margin-bottom:8px}
+  .career-row:last-child{margin-bottom:0}
+  .career-label{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+  .career-label-dept{background:#D0F0E4;color:#085041}
+  .career-label-job{background:#FAEEDA;color:#633806}
+  .career-text{font-size:13px;color:#3E3B57;line-height:1.6}
+  .prereq-box{background:#F1EFE8;border-radius:var(--border-radius-md);padding:1rem}
+  .prereq-title{font-size:13px;font-weight:700;color:#2C2C2A;margin-bottom:0.75rem;display:flex;align-items:center;gap:6px}
+  .prereq-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #E2E0D8;cursor:pointer}
+  .prereq-item:last-child{border-bottom:none}
+  .prereq-item input[type=checkbox]{width:18px;height:18px;cursor:pointer;flex-shrink:0;accent-color:#3C3489;margin-top:2px}
+  .prereq-item-label{font-size:14px;font-weight:700;color:var(--color-text-primary);line-height:1.4}
+  .prereq-item-sub{font-size:12px;color:var(--color-text-secondary);margin-top:4px}
+  .prereq-none{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
+  .calc-item{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.875rem}
+  .calc-item label{font-size:12px;font-weight:700;color:var(--color-text-secondary);display:block;margin-bottom:6px}
+  .calc-item input{width:100%;padding:8px;font-size:16px;font-weight:700;border:1px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);text-align:center}
+  .calc-result{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.5rem}
+  .calc-metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;text-align:center}
+  .calc-metric .num{font-size:24px;font-weight:700;color:var(--color-text-primary)}
+  .calc-metric .lbl{font-size:12px;font-weight:700;color:var(--color-text-secondary);margin-top:4px}
+  .progress-bar-wrap{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem}
+  .progress-bar-bg{background:var(--color-border-tertiary);border-radius:20px;height:12px;overflow:hidden;margin:10px 0 6px}
+  .progress-bar-fill{height:100%;border-radius:20px;background:#3C3489;transition:width 0.4s ease-out}
+  .progress-label{display:flex;justify-content:space-between;font-size:13px;color:var(--color-text-secondary)}
+  .selected-subject-card{outline:2px solid #3C3489!important;box-shadow:0 0 0 4px rgba(60,52,137,.12)!important;position:relative}
+  .selected-subject-card::after{content:"담김";position:absolute;right:10px;top:10px;background:#3C3489;color:#fff;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:700}
+  .fixed-subject-card{outline:2px solid #534AB7!important;box-shadow:0 0 0 4px rgba(83,74,183,.12)!important;position:relative}
+  .fixed-subject-card::after{content:"필수";position:absolute;right:10px;top:10px;background:#534AB7;color:#fff;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:700}
+  .selected-list{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;margin:0 0 1.5rem}
+  .selected-list-title{font-size:14px;font-weight:700;color:#3C3489;margin-bottom:0.75rem;display:flex;align-items:center;gap:6px}
+  .selected-list-item{font-size:13px;color:var(--color-text-secondary);padding:4px 0;line-height:1.5}
+  .cart-hint{background:#F6F4FF;border:1px solid #D9D5FF;border-radius:16px;padding:12px 14px;margin:0 0 1.5rem;font-size:13px;color:#3C3489;line-height:1.6;font-weight:600}
+  .cart-btn{width:100%;margin-top:1.25rem;border:none;border-radius:16px;background:#3C3489;color:#fff;padding:16px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(60,52,137,.18);transition:all 0.2s}
+  .cart-btn:hover{background:#2D2470}
+  .cart-btn.remove{background:#E9E7FF;color:#2D2470;box-shadow:none}
+  .cart-btn.remove:hover{background:#D9D5FF}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 입장 화면 -->
+  <div id="intro-screen" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#ffffff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100;padding:2rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+      <div style="position:absolute;top:-100px;right:-100px;width:350px;height:350px;border-radius:50%;background:rgba(60,52,137,0.05)"></div>
+      <div style="position:absolute;bottom:-80px;left:-80px;width:280px;height:280px;border-radius:50%;background:rgba(60,52,137,0.04)"></div>
+    </div>
+    <div style="position:relative;z-index:1;text-align:center;animation:fadeUp 0.7s ease both">
+      <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADEAMgDASIAAhEBAxEB/8QAGwABAAMBAQEBAAAAAAAAAAAAAAQFBgMCAQf/xABFEAABAwIEAgYGBwYGAwAAAAABAAIDBBEFEiExBhNBUWEiMnGBkaEUI0JSscHR8BUzNGKS4fEHJENTcqLSFiQ1Y4L/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAQIDBAX/xAAlEQEBAAIBBQACAgMAAAAAAAAAAQIREiExA0FRYROBsfD/2gAMAwEAAhEDEQA/AP2CvPbcHN1urzupmVx2R24nCjimeTCJAeQbbbLa7k3BuCumkW6ojEqmKGfKhd2bpDqRp3q3VWlqijUKtJy1kDmLf1iRkqn3VCnVb4DIPt9PaTnYzqXdO0fCPO6lV7bZ4aV2l+e0bUi24dRPUijFGfvZWdTjtzNd+0/T39eMI1bW1lTFnS0uXZSqzqcE9kVBVVBuiIiAiIgIiICIiAiIgIiICIiAiIgK4bOy+4N6DFXV5ue9YpbEGK0VpJzwvLg5+5vq4dPz8q4OacXBz6LGujFkLn3y+mue8e9RrnvZrmIiKFJpVzlPVyCW5znfSHIdFOeaKkLnPdJO7YNG5K5VX7bLBF9hFJfiBOfzCo+Y5r5DxXT6bTl73WKlVqhFG6pLvZ3nQclIpsPzE8yYmNIGmmpHksOBWyOJ1RF/UTX6E9F7n8LbqHnFWzBMqCKO7nMabjM42AJ67K36LUG4SvRuZhW3k/xHZf53XNb6OFV3B7sRy+Bc5KXRV8kphZJJa5pNu8AqzHTBo4uA6XJXF3c3RxcqlxYe8BXH4ZWiYCRlr9l21C5lHidqZWr3q7JdlEPRFYiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiIHVqZwLHMaCQ4i1wtGJ8QBw6Y0lFU5xLlnZz2MIzNFwL367LY6nGnzUdVbqSSF0ZnFVYqipqUlrqmFvtCqQJblmkPQbdLf8ApTRYfFiQiabvqYnEf5AzW1Hj4W8VpxHB3QzxBhvHPbMb9WE2IPf9VkYjVuaQBsTa4XSpFovDdVKC5t7gqvhW0aB2OVQnD3VEjIYwZHkjRoJuQtGFQS1srMl8oGpNrhaPZqbDo3zybNFr/D9VSmvU9NGHy3sDdxXqKiMJqH3F7E2AF+C0cMomz1LrWcGbkrWhsEWTpbfUqnOKUiXLXiC6QdmMHbUb+i5t1PVTX20N3E2G1rLuSEDxVuL4g8XZE6u9QC1hbqVZq7JsL42Ek7JkdKJHkDxVjAaxlPGa5zSZiNB1C0lO2z9+/nXFpvWLhbOp1KzNOLEE5Wkq3E0iLgkGzgCOYWIxcmaTtceIXO5kxjVZ7L2AxCqpVKuqVqnXtRERdciIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgJ1REBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAdNqIg9WouoiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiD/2Q==" alt="로고" style="width:120px;height:120px;border-radius:50%;object-fit:cover;box-shadow:0 8px 32px rgba(60,52,137,0.18);border:4px solid #EEEDFE;margin-bottom:1.5rem;display:block;margin-left:auto;margin-right:auto;animation:logoIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both">
+      <div style="font-size:11px;font-weight:600;color:#9994AE;letter-spacing:0.15em;margin-bottom:8px;text-transform:uppercase">JINCHEON HIGH SCHOOL · SINCE 1977</div>
+      <h1 style="font-size:26px;font-weight:700;color:#1a1464;margin-bottom:6px;letter-spacing:-0.02em">진천고등학교</h1>
+      <p style="font-size:14px;color:#66627A;margin-bottom:2.5rem;line-height:1.6;font-weight:500">고교학점제 이수 가이드북<br><span style="font-size:12px;color:#9994AE">3학년(2027학년도) · 2022 개정 교육과정</span></p>
+      <div style="width:40px;height:2px;background:linear-gradient(90deg,#3C3489,#7F77DD);margin:0 auto 2rem;border-radius:2px"></div>
+      <button onclick="enterGuide()" style="background:linear-gradient(135deg,#1a1464 0%,#3C3489 100%);color:#fff;border:none;border-radius:16px;padding:16px 48px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 8px 24px rgba(60,52,137,0.30);letter-spacing:0.02em;transition:all 0.2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">가이드북 입장하기 →</button>
+      <p style="font-size:12px;color:#9994AE;margin-top:1.5rem;font-weight:500">과목 탐색 · 관련 학과/직업 · 선이수 안내 · 학점 계산기 포함</p>
+    </div>
+  </div>
+  <style>
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes logoIn{from{opacity:0;transform:scale(0.6)}to{opacity:1;transform:scale(1)}}
+    @keyframes fadeOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.04);pointer-events:none}}
+    #intro-screen.leaving{animation:fadeOut 0.45s ease forwards}
+  </style>
+  <script>function enterGuide(){const s=document.getElementById('intro-screen');s.classList.add('leaving');setTimeout(()=>{s.style.display='none'},450)}</script>
+
+  <h2 class="sr-only">진천고등학교 3학년(2027) 고교학점제 이수 가이드북</h2>
+  <div style="position:relative">
+    <div class="splash">
+      <div class="splash-school">진천고등학교 · JINCHEON HIGH SCHOOL · SINCE 1977</div>
+      <div class="splash-title">고교학점제 이수 가이드북</div>
+      <div class="splash-sub">3학년(2027학년도) · 2022 개정 교육과정<br>학기별 이수학점을 확인하고 설계해보세요</div>
+      <div class="splash-divider"></div>
+      <div class="principal-box">
+        <p>3학년은 여러분이 설계한 배움의 마지막 단계입니다. 선택과목을 통해 자신의 진로와 꿈을 향해 나아가길 바랍니다. 진천고의 모든 선생님이 응원합니다.</p>
+        <div class="sig">— 진천고 선생님 일동 —</div>
+      </div>
+    </div>
+
+    <div class="nav-tabs">
+      <div class="nav-tab active" onclick="showMain('subjects',this)"><i class="ti ti-book-2" style="margin-right:4px"></i>과목 탐색</div>
+      <div class="nav-tab" onclick="showMain('calc',this)"><i class="ti ti-calculator" style="margin-right:4px"></i>3학년 학점 계산기</div>
+    </div>
+
+    <div id="main-subjects" class="main-page active">
+      <div class="sem-tabs">
+        <div class="sem-tab active" onclick="showSem('s1',this)"><i class="ti ti-calendar" style="margin-right:4px"></i>1학기</div>
+        <div class="sem-tab" onclick="showSem('s2',this)"><i class="ti ti-calendar" style="margin-right:4px"></i>2학기</div>
+      </div>
+
+      <div id="s1" class="sem-page active">
+        <div class="section-label">학교 지정과목 (기본 이수)</div>
+        <div class="designated-grid">
+          <div class="card c-kor fixed-subject-card" onclick="openModal('화법과 언어','국어 · 일반 · 4학점','5등급','다양한 담화 및 국어 자료를 탐구하여 화법과 언어에 대한 지식을 갖추고, 이를 바탕으로 일상 및 학업 상황에서 비판적·창의적으로 소통하는 능력을 기르는 일반 선택 과목입니다.','국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 광고홍보학과, 통번역학과 등','언론인, 중등교사, 강사, 상담 전문가, 프로듀서, 통역사, 언어학 연구원, 언어 치료사 등',[],true)"><div class="type-tag">일반</div><h4>화법과 언어</h4><p>국어 · 4학점</p></div>
+          <div class="card c-math fixed-subject-card" onclick="openModal('확률과 통계','수학 · 일반 · 4학점','5등급','경우의 수, 확률, 통계의 개념과 원리를 탐구합니다. 불확실성이 내포된 현상을 수학적으로 모델링하고 통계적으로 추론하여 합리적으로 의사결정하는 역량을 함양하는 과목입니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','경제학자, 대기과학자, 데이터과학자, 보험계리사, 신약개발연구원, 스포츠기록 분석원, 임상의학연구원, 투자분석가, 통계학자 등',[],true)"><div class="type-tag">일반</div><h4>확률과 통계</h4><p>수학 · 4학점</p></div>
+          <div class="card c-eng fixed-subject-card" onclick="openModal('영어 독해와 작문','영어 · 일반 · 4학점','5등급','다양한 주제의 영어 텍스트를 깊이 있게 읽고, 이를 바탕으로 자신의 생각과 의견을 논리적으로 구성하여 영어로 표현하는 독해 및 작문 능력을 통합적으로 기릅니다.','영어영문학과, 영어통번역학과, 영어학과, 국제관계학과, 미국학과','영어 통역가, 번역가, 문화유산해설사, 여행 안내원 등',[],true)"><div class="type-tag">일반</div><h4>영어 독해와 작문</h4><p>영어 · 4학점</p></div>
+          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 문화','체육 · 진로 · 1학점','3단계','스포츠의 역사와 윤리, 스포츠가 현대 사회 및 대중문화에 미치는 영향을 다각도로 탐구합니다.','체육교육과, 체육학과, 글로벌스포츠산업학부, 레저스포츠학과, 스포츠학과, 생활체육학과, 사회체육학과, 스포츠산업과학부 등','체육교사, 체육교수, 생활체육 지도자, 스포츠강사, 스포츠마케터, 스포츠에이전트, 레크리에이션지도자 등',[],true)"><div class="type-tag">진로</div><h4>스포츠 문화</h4><p>체육 · 1학점</p></div>
+        </div>
+        <div class="divider"></div>
+        <div class="section-label">학생 선택과목</div>
+
+        <div class="group-box" data-max="1">
+          <div class="group-header"><div class="group-title">국어 · 수학 · 영어</div><span class="group-badge badge-pick1">6과목 중 택1</span></div>
+          <div class="cards">
+            <div class="card c-kor" onclick="openModal('문학과 영상','국어 · 진로 · 3학점','5등급','문학 작품과 영상 매체(영화, 드라마 등)의 관계를 이해하고, 문학이 영상으로 어떻게 매체 변환되는지 비판적으로 분석·감상하며 창조적인 콘텐츠를 기획해보는 과목입니다.','국어국문학과, 문예창작과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 광고홍보학과, 국어교육과 등','작가, 언론인, 중등교사, 인문사회계열교수, 평론가, 프로듀서, 통역사, 문헌학자 등',[{name:'문학',type:'권장'}])"><div class="type-tag">진로</div><h4>문학과 영상</h4><p>국어 · 3학점</p></div>
+            <div class="card c-kor" onclick="openModal('독서 토론과 글쓰기','국어 · 융합 · 3학점','5등급','인문, 사회, 과학 등 다양한 분야의 텍스트를 읽고, 쟁점에 대해 토론하며 자신의 입장을 논리적인 글로 작성하는 과정을 통해 비판적 사고력과 융합적 문제 해결력을 기릅니다.','국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등','언론인, 중등교사, 독서지도사, 출판물 편집자, 평론가, 프로듀서, 방송 작가 등',[{name:'독서와 작문',type:'권장'}])"><div class="type-tag">융합</div><h4>독서 토론과 글쓰기</h4><p>국어 · 3학점</p></div>
+            <div class="card c-math" onclick="openModal('미적분Ⅱ','수학 · 진로 · 3학점','5등급','수열의 극한, 여러 가지 함수의 미분법과 적분법 등 해석학의 심화 내용을 다룹니다. 자연과학 및 공학 계열 진학에 필수적인 고급 수학 역량을 다집니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','경제학자, 기계공학자, 물리학자, 생명공학자, 수학자, 전기전자공학자, 컴퓨터공학자, 통계학자, 화학공학자 등',[{name:'대수',type:'필수'},{name:'미적분Ⅰ',type:'필수'}])"><div class="type-tag">진로</div><h4>미적분Ⅱ</h4><p>수학 · 3학점</p></div>
+            <div class="card c-math" onclick="openModal('수학과제 탐구','수학 · 융합 · 3학점','5등급','학생 스스로 수학적 관심사에 따라 탐구 주제를 선정하고, 자료를 수집·분석하여 문제를 해결한 뒤 결과 보고서를 작성하고 발표하는 프로젝트 중심의 자기주도적 과목입니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','사회, 자연, 과학 전반의 활동 분야',[])"><div class="type-tag">융합</div><h4>수학과제 탐구</h4><p>수학 · 3학점</p></div>
+            <div class="card c-eng" onclick="openModal('영미 문학 읽기','영어 · 진로 · 3학점','5등급','영어로 쓰인 소설, 시, 희곡 등 다양한 영미 문학 작품을 원문으로 감상합니다. 문학적 소양을 넓히고 심도 있는 영어 독해 능력을 함양합니다.','영어영문학과, 영문학부, 영미언어문화학과, 영어산업학과, 영어 통번역학과 등','작가, 기자, PD, 아나운서, 무역 담당자, 출판물 기획자, 호텔 지배인, 통번역가 등',[])"><div class="type-tag">진로</div><h4>영미 문학 읽기</h4><p>영어 · 3학점</p></div>
+            <div class="card c-eng" onclick="openModal('심화 영어 독해와 작문','영어 · 진로 · 3학점','5등급','일반 과목보다 한 차원 높은 수준의 학술적이고 전문적인 텍스트를 읽고, 비판적 사고를 바탕으로 자신의 견해를 영어로 명확하고 논리적으로 표현하는 고급 작문 역량을 기릅니다.','영미어문학부, 영미언어문화학과, 영어통상통역학과, 글로벌커뮤니케이션 영어전공 등','인문사회계열교수, 외교관, 인문과학연구원, 동시통역사, 번역가, 외국인회사 등',[{name:'영어 독해와 작문',type:'권장'}])"><div class="type-tag">진로</div><h4>심화 영어 독해와 작문</h4><p>영어 · 3학점</p></div>
+          </div>
+        </div>
+
+        <div class="group-box" data-max="3">
+          <div class="group-header"><div class="group-title">사회 · 과학</div><span class="group-badge badge-pick3">10과목 중 택3</span></div>
+          <div class="cards">
+            <div class="card c-soc" onclick="openModal('도시의 미래 탐구','사회 · 진로 · 3학점','5등급','현대 도시의 공간적 구조와 문제점을 지리적 관점에서 분석하고, 스마트 시티, 친환경 도시 등 지속 가능한 미래 도시의 발전 방향을 탐구합니다.','지리학, 지역학, 도시사회학, 부동산학, 환경학, 도시계획학, 도시행정학, 도시공학, 교통공학, 건축학, 토목공학 등','건축사, 도시 및 교통 설계 전문가, 도시 재생 전문가, 사진작가, 스마트 도시 전문가, 환경 컨설턴트, 부동산 전문가 등',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>도시의 미래 탐구</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('한국지리 탐구','사회 · 진로 · 3학점','5등급','우리나라 국토의 자연환경과 인문환경을 심도 있게 이해하고, 지역 불균형, 인구 변화 등 국가적 현안을 지리적 관점에서 종합적으로 분석합니다.','행정학과, 도시계획학과, 도시공학과, 정치외교학과, 부동산학과, 건축학과, 관광학과, 통계학과, 공간정보학과 등','도시계획가, 공간정보데이터분석가, 시정개발연구원, 부동산정책전문가, 여행상품개발자 등',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>한국지리 탐구</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('동아시아 역사 기행','사회 · 진로 · 3학점','5등급','한국, 중국, 일본 등 동아시아 지역의 역사적 전개 과정과 문화 교류 양상을 탐구하여, 동아시아의 평화와 공존 방안을 모색합니다.','신문방송학과, 정치외교학과, 국제학부, 국제관계학과, 사회학과, 역사학부, 사학과, 동양사학과, 역사교육과 등','언론인, 콘텐츠 크리에이터, 인문·사회과학 연구원, 대학교수, 교사, 공무원, 외교관, 국제무역사무원, 국제회의전문가 등',[{name:'세계사',type:'권장'}])"><div class="type-tag">진로</div><h4>동아시아 역사 기행</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('법과 사회','사회 · 진로 · 3학점','5등급','민주 시민으로서 갖추어야 할 법적 지식과 소양을 기릅니다. 헌법, 민법, 형법 등의 기초 법리를 배우고, 실생활에서 발생하는 다양한 법적 분쟁 및 권리 구제 과정을 학습합니다.','법학과, 자유전공학부, 세무학과, 경찰행정학과, 정치외교학과, 행정학과, 사회학과, 사회복지학과 등','판사, 검사, 변호사, 법률사무원, 법무사, 세무사, 관세사, 감정평가사, 부동산중개인, 손해사정사 등',[])"><div class="type-tag">진로</div><h4>법과 사회</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('인문학과 윤리','사회 · 진로 · 3학점','5등급','문학, 철학, 역사, 예술 등 인문학적 텍스트에 담긴 윤리적 의미를 탐구하고, 인간 삶의 본질적 가치와 도덕적 딜레마를 심도 있게 성찰하는 윤리 교과 심화 과목입니다.','윤리교육과, 철학과, 사회학과, 정치외교학과, 유학·동양학과, 종교학과, 문화인류학과, 상담심리학과 등','중등교사, 대학교수, 광고 및 홍보 전문가, 마케팅 전문가, 작가, 언론인, 인문·사회과학 연구원, 큐레이터 등',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">진로</div><h4>인문학과 윤리</h4><p>사회 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('전자기와 양자','과학 · 진로 · 3학점','5등급','전자기장, 맥스웰 방정식 등 전자기학의 원리와 현대 물리학의 기초가 되는 양자역학의 기본 개념을 학습하여 첨단 과학기술의 바탕을 이해하는 과목입니다.','물리학과, 물리교육과, 지질·지구물리학부, 기계·전기·전자·정보·건축·산업·신소재·컴퓨터·나노·화학공학 계열 등','국내외 국공립연구원, 전자·반도체·디스플레이 연구원, 기계·우주항공·자동차·정보통신·컴퓨터·신소재 공학자 등',[{name:'물리학',type:'권장'}])"><div class="type-tag">진로</div><h4>전자기와 양자</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('물질과 에너지','과학 · 진로 · 3학점','5등급','물질의 결합 구조와 성질, 화학 반응에 수반되는 열과 에너지 변화 등을 깊이 있게 탐구하여, 화학 공학 및 신소재 분야로 진학하기 위한 기초 지식을 다집니다.','화학과, 화학공학과, 화학생명공학과, 생화학과, 의예과, 약학과, 간호학과, 식품영양학과, 정밀화학과, 나노공학과 등','화학연구원, 자연과학연구원, 약사 및 한약사, 의사, 간호사, 화학제품제조원, 신재생에너지전문가 등',[{name:'화학',type:'권장'}])"><div class="type-tag">진로</div><h4>물질과 에너지</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('세포와 물질대사','과학 · 진로 · 3학점','5등급','생명 현상의 기본 단위인 세포의 미세 구조와 유기적 기능, 광합성과 세포 호흡 등 물질대사 메커니즘을 심화 탐구하는 생명과학 과목입니다.','생명과학과, 생명공학과, 생명자원학과, 생물교육과, 생물학과, 생화학과, 식품공학과, 약학과, 유전공학과 등','바이오에너지 연구원, 생명과학연구원, 생물학 연구원, 수산학연구원, 식품공학기술자, 약학연구원 등',[{name:'생명과학',type:'권장'}])"><div class="type-tag">진로</div><h4>세포와 물질대사</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('지구시스템과학','과학 · 진로 · 3학점','5등급','지구를 구성하는 기권, 수권, 지권, 생물권의 상호작용을 시스템적 관점에서 이해하고, 대기와 해양의 순환, 지구의 역사와 우주 환경을 종합적으로 탐구하는 과목입니다.','지구과학교육과, 과학교육학부, 지구환경과학과, 지구시스템과학과, 대기과학과, 지구해양학과, 에너지자원공학과 등','과학교사, 지질연구원, 자연계열교수, 기상연구원, 환경연구원, 자원개발 관련 종사원 등',[{name:'지구과학',type:'권장'}])"><div class="type-tag">진로</div><h4>지구시스템과학</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('융합과학 탐구','과학 · 융합 · 3학점','5등급_등급X','물리, 화학, 생명과학, 지구과학 등 과학의 분절적 지식을 융합하여, 첨단 기술 및 실생활 관련 복합적인 주제를 선정하고 과학적 탐구 방법을 적용해 문제를 해결해 보는 프로젝트형 과목입니다.','물리학과, 기계공학과, 전자공학과, 고분자공학과, 나노화학공학과, 바이오나노화학과, 응용화학과, 생화학과, 생명과학과 등','물리연구원, 기계공학자, 전자공학자, 화학연구원, 신약개발연구원, 에너지 연구원, 나노공학기술자, 생명과학연구원 등',[])"><div class="type-tag">융합</div><h4>융합과학 탐구</h4><p>과학 · 3학점</p></div>
+          </div>
+        </div>
+
+        <div class="group-box" data-max="1">
+          <div class="group-header"><div class="group-title">기술·가정/정보 · 제2외국어/한문</div><span class="group-badge badge-pick1">5과목 중 택1</span></div>
+          <div class="cards">
+            <div class="card c-tech" onclick="openModal('생활과학 탐구','기술·가정 · 진로 · 3학점','5등급','의식주 생활, 소비, 가족 관계 등 일상생활의 다양한 현상을 과학적 원리와 연계하여 탐구하고, 실천적인 문제 해결 및 관리 능력을 기르는 진로 탐색 과목입니다.','생활복지주거학과, 소비자아동학과, 식품공학과, 식품영양학과, 아동가족학과, 주거환경학과, 의류학과, 패션디자인과, 심리·상담과 등','보육교사, 사회복지사, 샵마스터, 소비자전문상담사, 식공간연출가, 식품기사, 식품연구원, 영양교사, 영양사 등',[])"><div class="type-tag">진로</div><h4>생활과학 탐구</h4><p>기술·가정 · 3학점</p></div>
+            <div class="card c-tech" onclick="openModal('데이터 과학','정보 · 진로 · 3학점','5등급','4차 산업혁명 시대의 핵심인 데이터를 효율적으로 수집, 처리, 시각화, 분석하는 원리와 프로그래밍 기법을 학습하여 데이터 기반의 논리적 의사결정 능력을 기릅니다.','컴퓨터공학과, 컴퓨터과학과, 소프트웨어학과, 인공지능학과, 데이터과학과, 전기·정보학과, 빅데이터 분석과, 정보보호과, 뇌인지과학융합과 등','인공지능 전문가, 데이터 과학자, 시스템 개발 전문가, 컴퓨터 프로그래머, 정보보호전문가, 게임프로그래머, 반도체 설계 등',[{name:'정보',type:'권장'}])"><div class="type-tag">진로</div><h4>데이터 과학</h4><p>정보 · 3학점</p></div>
+            <div class="card c-lang" onclick="openModal('독일어권 문화','제2외국어 · 융합 · 3학점','5등급','기초적인 언어 학습을 바탕으로 독일어권 국가들의 역사, 전통, 대중문화, 사회 제도를 폭넓게 탐구하며 세계 시민으로서의 문화적 다양성과 상호 존중 태도를 함양합니다.','독어독문학과, 독일어교육전공, 독일어통번역학과, 유럽학부, 서양어대학, 국제학부, 언어학과, 글로벌경영학, 글로벌경제학 등','언어학자, 문학 연구가, 특파원, 국제관계 전문가, 기업 및 공공기관 내 지역 전문가, 무역전문가, 항공업 종사자 등',[])"><div class="type-tag">융합</div><h4>독일어권 문화</h4><p>제2외국어 · 3학점</p></div>
+            <div class="card c-lang" onclick="openModal('중국 문화','제2외국어 · 융합 · 3학점','5등급','중국어 학습과 연계하여 중국의 고유한 역사, 지리, 전통 예술, 현대 사회 양상을 종합적으로 탐구하고, 이웃 국가에 대한 이해의 폭을 넓히는 문화 융합 과목입니다.','정치외교학과, 중어중문학과, 중국어교육과, 아시아학부, 유학·동양학과, 한문학과, 한문교육과, 국제학부, 언어학과 등','외교관, 국제협력기관 종사자, 언어학자, 문학 연구가, 기업 및 공공기관 내 지역 전문가, 무역전문가 등',[])"><div class="type-tag">융합</div><h4>중국 문화</h4><p>제2외국어 · 3학점</p></div>
+            <div class="card c-lang" onclick="openModal('한문 고전 읽기','한문 · 진로 · 3학점','5등급','한문으로 기록된 다양한 고전 문헌을 원전으로 강독하고 해석하여, 전통문화의 가치를 계승하고 현대 사회에 필요한 인문학적 통찰력과 삶의 지혜를 배웁니다.','법학과, 행정학과, 국어국문학과, 동양어문학과, 철학과, 사학과, 문화콘텐츠학과, 고고학과, 한문교육과, 한의예과 등','인문학 관련 교수, 고전 연구 및 번역 전문가, 학예연구사, 방송작가 등',[])"><div class="type-tag">진로</div><h4>한문 고전 읽기</h4><p>한문 · 3학점</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="s2" class="sem-page">
+        <div class="section-label">학교 지정과목 (기본 이수)</div>
+        <div class="designated-grid">
+          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 과학','체육 · 진로 · 1학점','3단계','스포츠와 인체 생리학, 생체 역학, 심리학 등 과학적 원리를 융합하여 운동 능력 향상 및 건강 증진의 원리를 체계적으로 탐구하고 체험하는 과목입니다.','체육교육과, 체육학과, 스포츠과학과, 글로벌스포츠산업학부, 스포츠학과, 국제스포츠학과, 생활체육학과, 스포츠의학과 등','체육교사, 체육교수, 스포츠과학자, 생활체육 지도자, 코치, 경기심판, 스포츠강사, 운동처방사, 퍼스널트레이너 등',[],true)"><div class="type-tag">진로</div><h4>스포츠 과학</h4><p>체육 · 1학점</p></div>
+        </div>
+        <div class="divider"></div>
+        <div class="section-label">학생 선택과목</div>
+
+        <div class="group-box" data-max="3">
+          <div class="group-header"><div class="group-title">국어 · 수학 · 영어</div><span class="group-badge badge-pick3">6과목 중 택3 · 각 4학점</span></div>
+          <div class="cards">
+            <div class="card c-kor" onclick="openModal('직무 의사소통','국어 · 진로 · 4학점','5등급','졸업 후 직업 생활을 영위하는 데 필요한 실질적인 언어 능력을 함양합니다. 직무 현장에서 빈번히 요구되는 문서 작성, 발표, 협상, 면접 등의 기술을 실무 중심으로 학습합니다.','국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과 등','회사원, 언론인, 중등교사, 평론가, 프로듀서, 통역사 등',[])"><div class="type-tag">진로</div><h4>직무 의사소통</h4><p>국어 · 4학점</p></div>
+            <div class="card c-kor" onclick="openModal('매체 의사소통','국어 · 융합 · 4학점','5등급','디지털 공간과 소셜 미디어 등 다양한 매체의 특성과 언어를 이해하고, 방대한 정보를 비판적으로 수용하며 자신만의 매체 콘텐츠를 기획·생산하는 융합적 역량을 키웁니다.','국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등','언론인, 방송 작가, 중등교사, 출판물 편집자, 평론가, 프로듀서, 통역사, 문헌학자 등',[])"><div class="type-tag">융합</div><h4>매체 의사소통</h4><p>국어 · 4학점</p></div>
+            <div class="card c-math" onclick="openModal('실용 통계','수학 · 융합 · 4학점','5등급','실생활 및 다양한 학문 분야의 데이터를 통계 소프트웨어를 활용하여 수집, 시각화, 분석, 해석하는 능력을 기르며 빅데이터 시대의 데이터 리터러시를 함양합니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','경제학자, 대기과학자, 데이터과학자, 보험계리사, 신약개발연구원, 스포츠기록 분석원, 임상의학연구원, 투자분석가 등',[{name:'확률과 통계',type:'필수'}])"><div class="type-tag">융합</div><h4>실용 통계</h4><p>수학 · 4학점</p></div>
+            <div class="card c-math" onclick="openModal('수학과 문화','수학 · 융합 · 4학점','5등급','수학이 미술, 음악, 건축, 철학, 역사 등 다양한 인류 문화 영역과 상호작용하며 발전해 온 과정을 탐구합니다. 수학의 예술적 가치와 인문학적 의미를 폭넓게 이해합니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','사회, 자연, 과학 전반의 활동 분야',[])"><div class="type-tag">융합</div><h4>수학과 문화</h4><p>수학 · 4학점</p></div>
+            <div class="card c-eng" onclick="openModal('실생활 영어 회화','영어 · 융합 · 4학점','5등급','일상생활, 해외여행, 기초적인 직무 상황 등에서 마주하는 다양한 맥락 속에서 자연스럽고 적절하게 의사소통할 수 있는 실용적인 영어 말하기와 듣기 능력을 기릅니다.','통번역학과, 영문학부, 국제학부, 글로벌커뮤니케이션 영어전공 등','통역가, 번역가, 여행안내원 등',[])"><div class="type-tag">융합</div><h4>실생활 영어 회화</h4><p>영어 · 4학점</p></div>
+            <div class="card c-eng" onclick="openModal('세계 문화와 영어','영어 · 융합 · 4학점','5등급','영어를 학습 도구로 사용하여 세계 여러 나라의 역사, 지리, 문학, 사회 제도를 폭넓게 탐구함으로써, 글로벌 마인드를 기르고 타 문화에 대한 포용적 태도를 함양합니다.','영미문화학과, 영미인문학과, 영어산업학과, 비즈니스 영어학과, 응용영어콘텐츠학과 등','무역 담당자, 여행 안내원, 인문과학연구원, 작가, 호텔 지배인 등',[])"><div class="type-tag">융합</div><h4>세계 문화와 영어</h4><p>영어 · 4학점</p></div>
+          </div>
+        </div>
+
+        <div class="group-box" data-max="3">
+          <div class="group-header"><div class="group-title">사회 · 과학</div><span class="group-badge badge-pick3">6과목 중 택3</span></div>
+          <div class="cards">
+            <div class="card c-soc" onclick="openModal('윤리문제 탐구','사회 · 융합 · 3학점','5등급_등급X','생명, 정보, 환경, 다문화 등 현대 사회에서 새롭게 등장하는 복잡한 윤리적 쟁점들을 깊이 있게 탐구하고, 토론을 통해 도덕적 가치 판단 능력과 실천적 대안을 모색합니다.','사회복지학과, 사회학과, 아동청소년학과, 정보사회학과, 문화인류학과, 윤리교육과, 철학과, 정치외교학과 등','사회복지사, 사회단체활동가(시민·인권·환경), 기자, 저널리스트, 중등교사, 대학교수 등',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">융합</div><h4>윤리문제 탐구</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('여행지리','사회 · 융합 · 3학점','5등급_등급X','현대인의 중요한 여가 활동인 여행을 지리적 관점에서 접근합니다. 국내외 주요 여행지의 자연경관, 문화적 매력, 관광 산업 등을 탐구하며 지역의 다양성을 폭넓게 이해합니다.','관광학과, 문화인류학과, 지리학과, 지리교육과, 건축학과, 도시계획학과, 외국어 관련 학과, 부동산학과 등','여행 작가, 관광 통역 안내사, 관광 여행 기획, 해외 시장 정보 분석원, 국제 분쟁 전문가, 증강현실 전문가 등',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">융합</div><h4>여행지리</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('역사로 탐구하는 현대 세계','사회 · 융합 · 3학점','5등급_등급X','현대 세계의 국제 분쟁, 인권, 환경, 경제 세계화 등의 주요 이슈들을 과거의 역사적 연원과 맥락 속에서 비판적으로 분석하고, 바람직한 세계 시민의 역할을 고찰합니다.','신문방송학과, 정치외교학과, 국제학부, 국제관계학과, 경제학과, 사회학과, 역사학부, 사학과, 서양사학과 등','언론인, 콘텐츠 크리에이터, 외환 딜러 및 무역사무원, 인문·사회과학 연구원, 대학교수, 교사, 공무원 등',[{name:'세계사',type:'권장'}])"><div class="type-tag">융합</div><h4>역사로 탐구하는 현대 세계</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('금융과 경제생활','사회 · 융합 · 3학점','5등급_등급X','합리적인 경제생활과 자산 관리를 위해 필수적인 금융 지식, 신용 관리, 저축과 투자, 금융 윤리 등을 실생활 사례를 중심으로 실용적이고 체계적으로 학습합니다.','경영학과, 경제학과, 금융경영과, 금융보험학과, 세무학과, 회계학과, 국제통상학과, 금융재무학과, 자산관리학부 등','금융자산운용가, 감정평가사, 증권분석가, 신용조사원, 손해사정사, 세무사, 회계사, 보험계리인, 부동산컨설턴트 등',[{name:'경제',type:'권장'}])"><div class="type-tag">융합</div><h4>금융과 경제생활</h4><p>사회 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('과학의 역사와 문화','과학 · 융합 · 3학점','5등급_등급X','고대부터 현대에 이르기까지 과학이 어떻게 발전해 왔으며, 그것이 인류의 사회, 문화, 철학적 세계관에 어떠한 영향을 미쳤는지 융합적으로 조망합니다.','역사학, 문화학, 예술사 관련학과, 과학사·과학철학학과, 사회과학계열, 과학교육학과 등','역사 연구원, 과학사 연구원, 과학 교사, 과학교육 연구원, 과학 저널리스트, 문화 예술 분야 연구원 등',[])"><div class="type-tag">융합</div><h4>과학의 역사와 문화</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('기후변화와 환경생태','과학 · 융합 · 3학점','5등급_등급X','전 지구적 위기인 기후변화의 과학적 원리를 분석하고, 이것이 생태계와 인류 생존에 미치는 영향을 탐구하여 탄소 중립 등 지속 가능한 환경을 위한 해결 방안을 모색합니다.','지구과학교육과, 과학교육학부, 지구환경과학과, 지구시스템과학과, 대기과학과, 지구해양학과, 에너지자원공학과 등','환경연구원, 환경관리자, 과학교사, 지질연구원, 자연계열교수, 기상연구원, 해양 연구원, 생태학자 등',[])"><div class="type-tag">융합</div><h4>기후변화와 환경생태</h4><p>과학 · 3학점</p></div>
+          </div>
+        </div>
+
+        <div class="group-box" data-max="1">
+          <div class="group-header"><div class="group-title">음악 · 미술</div><span class="group-badge badge-pick1">2과목 중 택1 · 2학점</span></div>
+          <div class="cards">
+            <div class="card c-art" onclick="openModal('음악 연주와 창작','음악 · 진로 · 2학점','3단계','성악 및 기악 연주 역량을 기르고, 디지털 도구를 활용하거나 직접 선율을 작곡하는 등 심화된 창작 활동을 통해 음악적 표현 능력과 예술적 감수성을 함양합니다.','피아노과, 성악과, 작곡과, 관현악과, 국악과, 음악교육과, 실용음악과, 종교음악과, 반주학과, 뮤지컬학과, 공연제작과 등','음악교사, 전공실기 강사, 방과 후 강사, 연주자, 음악치료사, 실기지도사, 문화예술 교육사, 악기 수리가 등',[])"><div class="type-tag">진로</div><h4>음악 연주와 창작</h4><p>음악 · 2학점</p></div>
+            <div class="card c-art" onclick="openModal('미술과 매체','미술 · 융합 · 2학점','3단계','전통 미술의 경계를 넘어 사진, 영상, 디지털 미디어 등 다양한 매체의 특성을 활용한 미술 창작과 감상 활동을 통해 시각 문화 시대의 미적 소통 능력을 기릅니다.','산업디자인학과, 판화과, 한국화과, 조소과, 금속공예과, 시각디자인학과, 멀티미디어디자인학과, AI디자인학과 등','디지털 아티스트, 일러스트레이터, 미디어 아티스트, 시각디자이너, 영상크리에이터 등',[])"><div class="type-tag">융합</div><h4>미술과 매체</h4><p>미술 · 2학점</p></div>
+          </div>
+        </div>
+
+        <div class="group-box" data-max="1">
+          <div class="group-header"><div class="group-title">교양</div><span class="group-badge badge-pick1-purple">2과목 중 택1 · 2학점</span></div>
+          <div class="cards">
+            <div class="card c-edu" onclick="openModal('인간과 철학','교양 · 진로 · 2학점','PF','인간 존재의 본질, 앎의 근원, 삶의 궁극적 의미와 가치 등 근본적인 물음에 대해 철학자들의 사유를 바탕으로 깊이 있게 성찰하며 인문학적 통찰력을 기릅니다.','윤리교육과, 철학과, 동양철학과, 유학·동양학과, 종교학과, 미학과, 역사철학부, 철학상담학과 등','중등교사, 작가, 기록물관리사, 기자, 소설가, 시인, 시나리오 작가, 평론가 등',[])"><div class="type-tag">진로</div><h4>인간과 철학</h4><p>교양 · 2학점</p></div>
+            <div class="card c-edu" onclick="openModal('논리와 사고','교양 · 진로 · 2학점','PF','생각을 올바르게 이끌어내는 연역과 귀납 등의 논리적 규칙을 배우고, 오류를 피하며 합리적으로 추론하는 방법을 익혀 모든 학문의 기초가 되는 비판적 사고력을 기릅니다.','철학과, 경제학과, 법학과, 수학과, 윤리학과 등','작가, 언론인, 논술지도사, 사회조사분석가, 철학연구원, 대학교수 등',[])"><div class="type-tag">진로</div><h4>논리와 사고</h4><p>교양 · 2학점</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-calc" class="main-page">
+      <div style="font-size:14px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6;background:var(--color-background-secondary);padding:1rem;border-radius:var(--border-radius-md);font-weight:500">
+        <i class="ti ti-info-circle" style="color:#3C3489;margin-right:6px;font-size:16px;vertical-align:-2px"></i>
+        3학년 목표 학점(1학기 28학점, 2학기 26학점 / 총 54학점)을 확인하세요.
+      </div>
+      <div class="cart-hint"><i class="ti ti-shopping-cart-plus" style="margin-right:4px"></i> 과목 카드를 누르면 내 수강 장바구니에 담깁니다.<br>담은 과목은 각 학기별 선택과목 영역에 자동 합산됩니다.</div>
+      <div class="selected-list">
+        <div class="selected-list-title"><i class="ti ti-checklist" style="font-size:16px"></i> 내 수강 장바구니 (선택과목)</div>
+        <div id="selected-list-body" class="selected-list-item">아직 선택한 과목이 없습니다. 과목 탐색 탭에서 추가해보세요.</div>
+      </div>
+      <div class="calc-grid">
+        <div class="calc-item" style="grid-column:1/3"><label>학교 지정과목 (1학기)</label><input type="number" value="13" readonly style="background:#f0f0f0;border:none;color:#66627A"></div>
+        <div class="calc-item" style="background:#EEEDFE;border:1px solid #D9D5FF;grid-column:1/3"><label style="color:#3C3489;font-weight:700">1학기 학생 선택과목 (장바구니 합산)</label><input type="number" id="cc-opt-1" value="0" readonly style="background:#F6F4FF;border:none;color:#3C3489"></div>
+      </div>
+      <div class="calc-grid" style="margin-top:-5px">
+        <div class="calc-item" style="grid-column:1/3"><label>학교 지정과목 (2학기)</label><input type="number" value="1" readonly style="background:#f0f0f0;border:none;color:#66627A"></div>
+        <div class="calc-item" style="background:#EEEDFE;border:1px solid #D9D5FF;grid-column:1/3"><label style="color:#3C3489;font-weight:700">2학기 학생 선택과목 (장바구니 합산)</label><input type="number" id="cc-opt-2" value="0" readonly style="background:#F6F4FF;border:none;color:#3C3489"></div>
+      </div>
+      <div class="calc-result">
+        <div class="calc-metric"><div class="num" id="cr-total-1">13</div><div class="lbl">1학기 총 학점</div><div id="cr-status-1" style="font-size:12px;margin-top:6px;font-weight:700"></div></div>
+        <div class="calc-metric"><div class="num" id="cr-total-2">1</div><div class="lbl">2학기 총 학점</div><div id="cr-status-2" style="font-size:12px;margin-top:6px;font-weight:700"></div></div>
+        <div class="calc-metric" style="background:#EEEDFE;border:1px solid #D9D5FF"><div class="num" id="cr-total-grand" style="color:#3C3489">14</div><div class="lbl" style="color:#3C3489">3학년 총 학점</div><div style="font-size:12px;margin-top:6px;font-weight:700;color:#3C3489">목표: 54학점</div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span style="font-weight:700;color:var(--color-text-primary)">3학년 이수 진행률</span><span id="cr-pct" style="font-weight:700;color:#3C3489">0%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="cr-bar" style="width:0%"></div></div>
+        <div class="progress-label"><span>0학점</span><span>54학점 (3학년 완료)</span></div>
+      </div>
+    </div>
+
+    <!-- 모달 -->
+    <div id="modal" class="modal-wrap">
+      <div class="modal">
+        <div class="modal-top">
+          <h3 id="modal-title"></h3>
+          <button class="close-btn" onclick="closeModal()"><i class="ti ti-x"></i></button>
+        </div>
+        <div class="modal-meta" id="modal-meta"></div>
+        <div class="modal-desc" id="modal-desc"></div>
+        <div id="modal-eval"></div>
+        <div id="modal-career"></div>
+        <div id="modal-prereq"></div>
+        <button id="cart-btn" class="cart-btn">장바구니에 담기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const evalData={
+  '5등급':{bg:'#E6F1FB',tc:'#0C447C',dc:'#378ADD',vc:'#185FA5',title:'성적 처리 방식 (일반/진로 선택)',rows:[{k:'성취도',v:'5단계 (A·B·C·D·E) 표기'},{k:'석차등급',v:'5등급제 산출 (상위 10% 1등급)'},{k:'대입 반영',v:'석차등급이 산출되어 대학 입시에 주요하게 반영됩니다.'}]},
+  '5등급_등급X':{bg:'#E1F5EE',tc:'#085041',dc:'#1D9E75',vc:'#0F6E56',title:'성적 처리 방식 (융합 선택)',rows:[{k:'성취도',v:'5단계 (A·B·C·D·E) 표기 (절대평가)'},{k:'석차등급',v:'산출 없음 (등급 미기재)'},{k:'대입 반영',v:'수강자의 등급 부담 완화를 위해 성취도만 제공됩니다.'}]},
+  '3단계':{bg:'#FAECE7',tc:'#4A1B0C',dc:'#D85A30',vc:'#993C1D',title:'성적 처리 방식 (체육/예술)',rows:[{k:'성취도',v:'3단계 (A·B·C) 표기'},{k:'석차등급',v:'산출 없음'},{k:'대입 반영',v:'원점수와 과목평균 없이 성취도만 대입 자료로 제공됩니다.'}]},
+  'PF':{bg:'#EEEDFE',tc:'#3C3489',dc:'#7F77DD',vc:'#534AB7',title:'성적 처리 방식 (교양)',rows:[{k:'성취도',v:'P(Pass, 이수) / F(Fail, 미이수) 표기'},{k:'석차등급',v:'산출 없음'},{k:'대입 반영',v:'단순 이수 여부(P)만 학교생활기록부에 기재됩니다.'}]}
+};
+
+let currentModalTitle='';
+let currentModalIsDesignated=false;
+let selectedSubjectsMap=new Map();
+
+function showMain(id,el){
+  document.querySelectorAll('.main-page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('main-'+id).classList.add('active');
+  el.classList.add('active');
+}
+function showSem(id,el){
+  document.querySelectorAll('.sem-page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sem-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+function openModal(title,meta,evalType,desc,dept,job,prereqs,isDesignated=false){
+  currentModalTitle=title;
+  currentModalIsDesignated=isDesignated;
+  document.getElementById('modal-title').textContent=title;
+  document.getElementById('modal-meta').innerHTML=meta.split(' · ').map(m=>`<span>${m}</span>`).join('');
+  document.getElementById('modal-desc').textContent=desc;
+
+  // 평가 정보
+  const ev=evalData[evalType];
+  if(ev){
+    const rowsHtml=ev.rows.map(r=>`<div class="eval-row"><div class="eval-dot" style="background:${ev.dc}"></div><div style="color:${ev.vc}"><span class="eval-key">${r.k} — </span>${r.v}</div></div>`).join('');
+    document.getElementById('modal-eval').innerHTML=`<div class="eval-box" style="background:${ev.bg}"><div class="eval-title" style="color:${ev.tc}"><i class="ti ti-clipboard-check" style="font-size:16px;margin-right:4px"></i>${ev.title}</div>${rowsHtml}</div>`;
+  } else {
+    document.getElementById('modal-eval').innerHTML='';
+  }
+
+  // 관련 학과 및 직업
+  if(dept || job){
+    document.getElementById('modal-career').innerHTML=`
+      <div class="career-box">
+        <div class="career-title"><i class="ti ti-compass" style="font-size:16px"></i>관련 학과 및 직업</div>
+        ${dept ? `<div class="career-row"><span class="career-label career-label-dept">관련 학과</span><span class="career-text">${dept}</span></div>` : ''}
+        ${job ? `<div class="career-row"><span class="career-label career-label-job">관련 직업</span><span class="career-text">${job}</span></div>` : ''}
+      </div>`;
+  } else {
+    document.getElementById('modal-career').innerHTML='';
+  }
+
+  // 선이수 과목
+  if(prereqs && prereqs.length>0){
+    const itemsHtml=prereqs.map((p,i)=>{
+      const badge=p.type==='필수'
+        ?`<span style="background:#FCEBEB;color:#A32D2D;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:700">선이수 필수</span>`
+        :`<span style="background:#FAEEDA;color:#633806;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:700">선이수 권장</span>`;
+      return `<label class="prereq-item"><input type="checkbox" id="pre_${i}" onchange="updatePrereqStatus()"><div><div class="prereq-item-label">${p.name} ${badge}</div><div class="prereq-item-sub">${p.type==='필수'?'반드시 이수해야 합니다':'이수 후 수강하면 더욱 효과적입니다'}</div></div></label>`;
+    }).join('');
+    document.getElementById('modal-prereq').innerHTML=`<div class="prereq-box"><div class="prereq-title"><i class="ti ti-checklist" style="font-size:16px;color:#5F5E5A"></i>이러한 과목들을 이수했나요?</div>${itemsHtml}<div id="prereq-status" style="margin-top:12px;font-size:13px;font-weight:600;color:#5F5E5A;text-align:center;padding:8px;border-radius:8px;background:var(--color-background-primary)">체크박스를 눌러 이수 여부를 확인하세요</div></div>`;
+    window._prereqCount=prereqs.length;
+    window._prereqRequired=prereqs.filter(p=>p.type==='필수').length;
+  } else {
+    document.getElementById('modal-prereq').innerHTML=`<div class="prereq-box"><div class="prereq-title"><i class="ti ti-checklist" style="font-size:16px;color:#5F5E5A"></i>선이수 과목</div><div class="prereq-none">별도의 선이수 필수·권장 과목이 없습니다. 누구든지 수강할 수 있어요!</div></div>`;
+  }
+
+  const cartBtn=document.getElementById('cart-btn');
+  if(isDesignated){
+    cartBtn.innerHTML='<i class="ti ti-lock"></i> 학교 지정 필수 과목';
+    cartBtn.classList.add('remove');
+    cartBtn.style.pointerEvents='none';
+    cartBtn.onclick=null;
+  } else {
+    cartBtn.style.pointerEvents='auto';
+    updateCartButton();
+    cartBtn.onclick=toggleCart;
+  }
+  document.getElementById('modal').classList.add('open');
+}
+
+function updatePrereqStatus(){
+  const total=window._prereqCount||0;
+  const required=window._prereqRequired||0;
+  let checked=0;
+  for(let i=0;i<total;i++){const el=document.getElementById('pre_'+i);if(el&&el.checked)checked++;}
+  const s=document.getElementById('prereq-status');if(!s)return;
+  if(checked===total){s.style.background='#E1F5EE';s.style.color='#085041';s.textContent='모든 선이수 과목을 이수했어요! 수강 준비 완료 🎉';}
+  else if(required>0){s.style.background='#FCEBEB';s.style.color='#A32D2D';s.textContent='필수 선이수 과목을 먼저 이수해 주세요.';}
+  else{s.style.background='#FAEEDA';s.style.color='#633806';s.textContent='권장 과목 이수 후 수강하면 더욱 효과적입니다.';}
+}
+
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+
+function toggleCart(){
+  if(selectedSubjectsMap.has(currentModalTitle)){
+    selectedSubjectsMap.delete(currentModalTitle);
+  } else {
+    let credit=0,semester=1;
+    document.querySelectorAll('.card').forEach(card=>{
+      if(card.querySelector('h4').textContent===currentModalTitle){
+        const match=card.querySelector('p').textContent.match(/(\d+)학점/);
+        if(match)credit=parseInt(match[1]);
+        if(card.closest('#s2'))semester=2;
+      }
+    });
+    selectedSubjectsMap.set(currentModalTitle,{credit,semester});
+  }
+  updateCartButton();updateCartUI();closeModal();
+}
+
+function updateCartButton(){
+  const btn=document.getElementById('cart-btn');
+  if(selectedSubjectsMap.has(currentModalTitle)){
+    btn.innerHTML='<i class="ti ti-trash"></i> 장바구니에서 빼기';btn.classList.add('remove');
+  } else {
+    btn.innerHTML='<i class="ti ti-shopping-cart-plus"></i> 장바구니에 담기';btn.classList.remove('remove');
+  }
+}
+
+function updateCartUI(){
+  const list=document.getElementById('selected-list-body');
+  if(selectedSubjectsMap.size===0){
+    list.innerHTML='아직 선택한 과목이 없습니다. 과목 탐색 탭에서 추가해보세요.';
+    document.getElementById('cc-opt-1').value=0;
+    document.getElementById('cc-opt-2').value=0;
+  } else {
+    let html='',total1=0,total2=0;
+    selectedSubjectsMap.forEach((info,title)=>{
+      const ts=info.semester===1?'[1학기]':'[2학기]';
+      html+=`<div class="selected-list-item"><i class="ti ti-book" style="margin-right:4px"></i> ${ts} ${title} <span style="color:#3C3489;font-weight:700">(${info.credit}학점)</span></div>`;
+      if(info.semester===1)total1+=info.credit;else total2+=info.credit;
+    });
+    list.innerHTML=html;
+    document.getElementById('cc-opt-1').value=total1;
+    document.getElementById('cc-opt-2').value=total2;
+  }
+  document.querySelectorAll('.card').forEach(card=>{
+    const title=card.querySelector('h4').textContent;
+    if(selectedSubjectsMap.has(title))card.classList.add('selected-subject-card');
+    else card.classList.remove('selected-subject-card');
+  });
+  document.querySelectorAll('.group-box').forEach(box=>{
+    const max=parseInt(box.getAttribute('data-max'),10);if(!max)return;
+    const cards=box.querySelectorAll('.card');let sel=0;
+    cards.forEach(c=>{if(c.classList.contains('selected-subject-card'))sel++;});
+    cards.forEach(c=>{
+      if(sel>=max&&!c.classList.contains('selected-subject-card'))c.classList.add('disabled-subject-card');
+      else c.classList.remove('disabled-subject-card');
+    });
+  });
+  calcAll();
+}
+
+function calcAll(){
+  const req1=13,req2=1;
+  const opt1=parseInt(document.getElementById('cc-opt-1').value)||0;
+  const opt2=parseInt(document.getElementById('cc-opt-2').value)||0;
+  const t1=req1+opt1,t2=req2+opt2,grand=t1+t2;
+  document.getElementById('cr-total-1').textContent=t1;
+  document.getElementById('cr-total-2').textContent=t2;
+  document.getElementById('cr-total-grand').textContent=grand;
+  const s1=document.getElementById('cr-status-1'),s2=document.getElementById('cr-status-2');
+  if(t1===28){s1.textContent=`충족 (28/28)`;s1.style.color='#1D9E75';}
+  else if(t1>28){s1.textContent=`초과 (${t1}/28)`;s1.style.color='#E24B4A';}
+  else{s1.textContent=`미달 (${t1}/28)`;s1.style.color='#E24B4A';}
+  if(t2===26){s2.textContent=`충족 (26/26)`;s2.style.color='#1D9E75';}
+  else if(t2>26){s2.textContent=`초과 (${t2}/26)`;s2.style.color='#E24B4A';}
+  else{s2.textContent=`미달 (${t2}/26)`;s2.style.color='#E24B4A';}
+  const pct=Math.min(100,Math.round(grand/54*100));
+  document.getElementById('cr-pct').textContent=pct+'%';
+  document.getElementById('cr-bar').style.width=pct+'%';
+}
+
+window.onload=function(){calcAll();};
+</script>
+</body>
+</html>
